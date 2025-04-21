@@ -1,7 +1,6 @@
 import resend from "@/lib/resend";
 import { ApiResponse } from "@/types/apiResponse";
 import VerificationEmail from "../../email/verificationTemplate";
-import { Verification } from "next/dist/lib/metadata/types/metadata-types";
 
 export const sendVerificationEmail = async (email: string, username: string, otp: string): Promise<ApiResponse> => {
   try {
