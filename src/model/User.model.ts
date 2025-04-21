@@ -6,8 +6,8 @@ export interface User extends Document {
     email: string;
     password: string;
     isVerified: boolean;
-    vrificationCode: string;
-    vrificationCodeExpiry: Date;
+    verificationCode: string;
+    verificationCodeExpiry: Date;
     isAcceptingMessage: boolean;
     messages: Message[];
     createdAt: Date;
@@ -36,11 +36,11 @@ const UserSchema: Schema<User> = new Schema({
         required: true,
         default: false
     },
-    vrificationCode: {
+    verificationCode: {
         type: String,
         required: true
     },
-    vrificationCodeExpiry: {
+    verificationCodeExpiry: {
         type: Date,
         required: true
     },
