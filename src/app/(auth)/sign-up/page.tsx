@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -114,7 +113,11 @@ const page = () => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" disabled={isSubmiting}>
+                        {
+                            isSubmiting?(<>Loading...</>):("Submit")
+                        }
+                    </Button>
                 </form>
             </Form>
         </div>
