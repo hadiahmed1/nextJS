@@ -2,8 +2,6 @@ import { getServerSession, User } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User.model";
-import MessageModel from "@/model/Message.model";
-
 
 export async function POST(request: Request) {
     await dbConnect();
@@ -40,8 +38,6 @@ export async function POST(request: Request) {
         }, { status: 500 });
     }
 }
-
-
 
 export async function GET(request: Request) {
     await dbConnect();
