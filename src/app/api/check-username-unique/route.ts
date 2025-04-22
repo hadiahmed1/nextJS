@@ -2,7 +2,6 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User.model";
 import { z } from "zod";
 import { usernameValidation } from "@/schema/username.schema";
-import { error } from "console";
 
 const UsernameQuerySchema = z.object({
     username: usernameValidation
@@ -41,6 +40,6 @@ export async function GET(request: Request) {
         return Response.json({
             success: false,
             message: "Invalid username"
-        }, { status: 500 })
+        }, { status: 500 });
     }
 }
