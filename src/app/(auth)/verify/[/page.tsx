@@ -36,9 +36,10 @@ const page = () => {
                 username, code: data.code
             });
             toast.success(response.data.message);
+            router.replace('/sign-in')
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>;
-            toast.error(axiosError.response?.data.message ?? "Error while checking username");
+            toast.error(axiosError.response?.data.message ?? "Error while Verifying user");
         }
         setIsSubmiting(false);
     }
