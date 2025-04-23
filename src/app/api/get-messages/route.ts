@@ -9,18 +9,16 @@ export async function GET(request: Request) {
     try {
         const session = await getServerSession(authOptions);
         const user = session?.user;
-
         if (!session || !user) return Response.json({
             success: false,
             message: "User not authenticated"
         }, { status: 401 });
-
         const userId = new mongoose.Types.ObjectId(user._id);
 
         const messages = await UserModel.aggregate([
             { $match: { _id: userId } },
-            { $unwind: "messages" },
-            { $sort: { "$createdAt": -1 } },
+            { $unwind: "$messages" },
+            { $sort: { "createdAt": -1 } },
             {
                 $group: {
                     _id: "$_id",
@@ -28,8 +26,7 @@ export async function GET(request: Request) {
                 }
             }
         ]);
-
-        if (!messages || messages.length === 0) return Response.json({
+        if (!messages) return Response.json({
             success: false,
             message: "No messages found"
         }, { status: 404 });;
@@ -41,7 +38,7 @@ export async function GET(request: Request) {
         }, { status: 200 });
 
     } catch (error) {
-        console.log("Couldn't update message state");
+        console.log("Couldn't update message state", error);
         return Response.json({
             success: false,
             message: "Couldn't update message accepting status"
