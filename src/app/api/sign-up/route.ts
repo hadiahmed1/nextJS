@@ -48,7 +48,6 @@ export async function POST(request: Request) {
             await user.save();
         }
         //send email
-        console.log(email);
         const emailResponse = await sendVerificationEmail(email, username, verificationCode);
         console.log(emailResponse)
         if (!emailResponse.success)

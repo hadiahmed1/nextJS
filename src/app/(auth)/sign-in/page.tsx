@@ -41,8 +41,6 @@ const page = () => {
             password: data.password
         });
 
-        console.log("signIn :>>", result);
-
         if (result?.error) {
             toast.error("Unable to login");
         }

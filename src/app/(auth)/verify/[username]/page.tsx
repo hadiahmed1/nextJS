@@ -43,8 +43,6 @@ const page = () => {
         }
         setIsSubmiting(false);
     }
-
-    console.log(param)
     return (
         <div>
             <Form {...form}>
